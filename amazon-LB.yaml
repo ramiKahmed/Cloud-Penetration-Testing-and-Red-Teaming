@@ -1,0 +1,18 @@
+
+id: AWS-Load-Balancer
+
+info:
+  name: detect AWS Load Balancer 
+  author: Tr0cks
+  severity: info
+  
+requests:
+
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+    matchers:
+      - type: regex
+        regex:
+          - "(?:AWSALB|AWSALBCORS)"
+        part: header

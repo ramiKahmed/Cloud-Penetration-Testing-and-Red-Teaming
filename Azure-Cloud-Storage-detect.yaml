@@ -1,0 +1,31 @@
+# ID Block 
+id: Azure-Cloud-storage-detect
+
+# Info Block
+info:
+  # Name is the name of the template
+  name: detect azure services  storage
+  # Author is the name of the author for the template
+  author: Tr0cks
+  # Severity is the severity for the template.
+  severity: info
+  #  Description optionally describes the template.
+  description: detect azure services by matching the Headers
+
+
+# Start the requests for the template right here
+requests:
+  # Method is the method for the request
+  - method: GET
+    path: 
+      - "{{BaseURL}}"
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - "Server: Microsoft-HTTPAPI/2.0"
+        part: header
+      - type: status
+        status:
+          - 400
+

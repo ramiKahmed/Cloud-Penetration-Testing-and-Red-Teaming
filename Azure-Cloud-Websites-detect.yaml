@@ -1,0 +1,30 @@
+# ID Block
+id: Azure-Cloud-websites-detect
+
+# Info Block
+info:
+  # Name is the name of the template
+  name: detect azure APP services (websites)
+  # Author is the name of the author for the template
+  author: Tr0cks
+  # Severity is the severity for the template.
+  severity: info
+  #  Description optionally describes the template.
+  description: detect azure websites by looking for the domain azurewebsites.net within the response header
+
+
+# Start the requests for the template right here
+requests:
+  # Method is the method for the request
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - "azurewebsites.net"
+        part: header
+      - type: status
+        status:
+          - 200

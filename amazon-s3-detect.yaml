@@ -1,0 +1,25 @@
+# ID Block 
+id: amazon-s3-detect
+
+# Info Block
+info:
+  # Name is the name of the template
+  name: detect amazon s3 storage 
+  # Author is the name of the author for the template
+  author: Tr0cks
+  # Severity is the severity for the template.
+  severity: info
+  #  Description optionally describes the template.
+  description: Identify Amazon S3 Buckets 
+
+# Start the requests for the template right here
+requests:
+  # Method is the method for the request
+  - method: GET
+    path: 
+      - "{{BaseURL}}"
+    matchers:
+      - type: word
+        words: 
+          - "Server: AmazonS3"
+        part: header
