@@ -24,13 +24,13 @@ Tools, Resources &amp; Helpful Tips
   * amazon-s3-detect.yaml
   
      ```
-     cat urls | nuclei -t Azure-Cloud-Websites-detect.yaml
+     cat urls | nuclei -t amazon-s3-detect.yaml
      ```
 
   * amazon-LB.yaml
   
     ```
-    cat urls | nuclei -t Azure-Cloud-Websites-detect.yaml
+    cat urls | nuclei -t amazon-LB.yaml
     ```
 
 
