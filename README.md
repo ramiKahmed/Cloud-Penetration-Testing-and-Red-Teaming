@@ -34,4 +34,4 @@ Tools, Resources &amp; Helpful Tips
     ```
 
 
-## GCP 
+
