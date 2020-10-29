@@ -4,6 +4,13 @@ Tools, Resources &amp; Helpful Tips
 
 ## Azure 
 
+## Searching for keys,secrets and others locally ( on-premise ) 
+ * look for users who use Azure by searching for .Azure dir in their profiles 
+ ```
+ Get-ChildItem -Path C:\users\* -Recurse -Filter ".azure" | % { write-host $_.fullname -ForegroundColor green }
+ ```
+ 
+ ## Content Discovery for cloud Assets
 ### YAML rules to use with Nuclei Scanner 
 
   * Azure-Cloud-Storage-detect.yaml
