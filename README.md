@@ -1,6 +1,26 @@
 # Cloud-Penetration-Testing-and-Red-Teaming
-Tools, Resources &amp; Helpful Tips 
+Tools, Resources &amp; Helpful Tips
 
+![](Images/cloudInfraHacking.png)
+
+## All-in-one
+
+### Cloud Assets Discovery 
+
+*Spidering websites to extract cloud assets*
+
+- using gospider 
+```
+gospider -d 0 -a -w -r   --js --sitemap --robots -q  -u web -s http://domain.com | sed 's|.*]||' | awk '{print $2}' | egrep -i 'azure|azurewebsites.net|cloudapp.net|core.windows.net|awsapps.com|s3.amazonaws.com|s3|blob|amazonaws.com|digitaloceanspaces|aliyuncs.com|googleapis'
+```
+- using lolruslove.py
+```
+python lolruslove.py http://domain.com  2>&1 | grep  -i url | cut -d"]" -f 2 | egrep -i 'azure|azurewebsites.net|cloudapp.net|core.windows.net|awsapps.com|s3.amazonaws.com|s3|blob|amazonaws.com|digitaloceanspaces|aliyuncs.com|googleapis' | awk '{print $2}'
+```
+- using shodan 
+```
+shodan download out-file 'hostname:<domain>' --limit -1 && sudo gunzip out-file.json.gz && sudo shodan parse --fields ip_str,port,org,hostnames,location.country_name,org,domains out-file.json | egrep -i 'azure|azurewebsites.net|cloudapp.net|core.windows.net|awsapps.com|s3.amazonaws.com|s3|blob|amazonaws.com|digitaloceanspaces|aliyuncs.com|googleapis'
+```
 
 ## Azure 
 
