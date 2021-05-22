@@ -76,5 +76,9 @@ shodan download out-file 'hostname:<domain>' --limit -1 && sudo gunzip out-file.
  ```
  Get-ChildItem -Path C:\users\* -Recurse -Include ('*.azure','*.aws')  | % { write-host $_.fullname -ForegroundColor green }
  ```
+ 
+ 
+ ## Awesome github repos 
+ * https://github.com/Kyuu-Ji/Awesome-Azure-Pentest 
 
 
