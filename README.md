@@ -4,6 +4,11 @@ Tools, Resources &amp; Helpful Tips
 
 ![](Images/cloudInfraHacking.png)
 
+## Install required modules for Azure using powershell
+
+```
+Invoke-AzureAnd365ModulesInstallation -All
+```
 ## All-in-one
 
 ### Cloud Assets Discovery 
