@@ -46,7 +46,7 @@ get-aadinttenantdomains -domain domain.com
 
 * **Recon using netspi’s Get-FederationEndpoint** - https://raw.githubusercontent.com/NetSPI/PowerShell/master/Get-FederationEndpoint.ps1
 ```
-IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/NetSPI/PowerShell/master/Get-FederationEndpoint.ps1'); Get-FederationEndpoint -domain.com
+IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/NetSPI/PowerShell/master/Get-FederationEndpoint.ps1'); Get-FederationEndpoint -domain domain.com
 ```
 
 * **Recon using Invoke-Get-AADIntTenantDomains  + Get-FederationEndpoint** - ( you can run this command if you have multiple domains returned with invoke-aadintreconasoutsider )
