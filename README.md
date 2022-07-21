@@ -41,7 +41,7 @@ Get-AADIntLoginInformation -Domain domain.com
 
 * **Recon using aadinternal’s get-aadinttenantdomains** - retrieve tenant domains 
 ```
-Get-AADIntLoginInformation -Domain domain.com
+get-aadinttenantdomains -domain domain.com
 ```
 
 * **Recon using netspi’s Get-FederationEndpoint** - https://raw.githubusercontent.com/NetSPI/PowerShell/master/Get-FederationEndpoint.ps1
