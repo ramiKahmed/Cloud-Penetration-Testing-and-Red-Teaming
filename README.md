@@ -11,6 +11,94 @@ Invoke-AzureAnd365ModulesInstallation -All
 ```
 ## All-in-one
 
+### Cloud Existence Discovery
+* **Get Federation info for target domain by quering** (https://login.microsoftonline.com/) - check tenant existence
+
+```
+_check_federationInfo domain.com
+```
+
+* **Get OpenID config by quering** (https://login.microsoftonline.com/tenantname/v2.0/.well-known/openid-configuration) - check tenant existence & retrieve Tenant ID
+
+```
+_check_OpenIDConfig domain.com
+```
+
+* **Get OpenID config using aadinternal’s get-aadintopenidconfiguration** - (https://github.com/Gerenios/AADInternals)
+```
+invoke-aadintreconasoutsider -domainname domain.com 2> $null
+```
+
+* **Recon using aadinternal’s invoke-aadintreconasoutsider** - (https://github.com/Gerenios/AADInternals)
+```
+invoke-aadintreconasoutsider -domainname domain.com 2> $null
+```
+
+* **Recon using aadinternal’s Get-AADIntLoginInformation** - (https://github.com/Gerenios/AADInternals)
+```
+Get-AADIntLoginInformation -Domain domain.com
+```
+
+* **Recon using aadinternal’s get-aadinttenantdomains** - retrieve tenant domains 
+```
+Get-AADIntLoginInformation -Domain domain.com
+```
+
+* **Recon using netspi’s Get-FederationEndpoint** - https://raw.githubusercontent.com/NetSPI/PowerShell/master/Get-FederationEndpoint.ps1
+```
+IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/NetSPI/PowerShell/master/Get-FederationEndpoint.ps1'); Get-FederationEndpoint -domain.com
+```
+
+* **Recon using Invoke-Get-AADIntTenantDomains  + Get-FederationEndpoint** - ( you can run this command if you have multiple domains returned with invoke-aadintreconasoutsider )
+```
+IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/NetSPI/PowerShell/master/Get-FederationEndpoint.ps1') ; Get-AADIntTenantDomains  domain.com |  % { Get-FederationEndpoint -domain $_ } | ft -wrap -autosize
+``` 
+
+* **Query DNS records for sharepoint** - (https://companydomain.sharepoint.com/)  
+```
+_check_sharepoint_existence <companynameonly>
+```
+ 
+* **Recon using Oh365UserFinder** - (https://github.com/dievus/Oh365UserFinder)
+ ```
+ python3 oh365userfinder.py -d domain.com
+ ```
+
+* **Recon using o365chk.py** - (https://github.com/nixintel/o365chk)
+```
+python3 o365chk.py -d domain.com
+```
+
+* **Recon using offensive_azure's outsider_recon.py** - (https://github.com/blacklanternsecurity/offensive-azure/blob/main/offensive_azure/Outsider_Recon/outsider_recon.py)
+```
+python3  ~/tools/offensive-azure/offensive_azure/Outsider_Recon/outsider_recon.py domain.com   -o outfile
+```
+
+* **Check CNAME record for the autodiscover endpoint of the target domain** 
+```
+_check_autodiscover_cnmae domain.com
+```
+
+* **Query the MX record for the target domain** -  if the MX record is set to ( companydomain-com.mail.protection.outlook.com ) then the target company is using O365 
+```
+_check_mx_records domain.com
+(Resolve-DnsName -name domain.com -Type MX ).NameExchange # requires aadinternals module - install-module aadinternals -force 
+```
+
+* **Query the TXT record for the target domain** -  if the TXT record includes  (mail.protection.outlook.com), then the target company is using O365 
+```
+_check_txt_records domain.com
+(Resolve-DnsName -name domain.com -Type TXT).strings # requires aadinternals module - install-module aadinternals -forc
+```
+
+* **Recon using trevorspray.py** - (https://github.com/blacklanternsecurity/TREVORspray)
+```
+python trevorspray.py --recon domain.com 
+```
+
+
+
+
 ### Cloud Assets Discovery 
 
 *Spidering websites to extract cloud assets*
